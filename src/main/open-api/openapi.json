@@ -1,0 +1,89 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Sample to check code generation",
+    "version": "1.00.00"
+  },
+  "paths": {
+    "/info": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Info"
+                }
+              }
+            },
+            "description": "Fake endpoint"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Info": {
+        "type": "object",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/Iso3166_3"
+          },
+          {
+            "$ref": "#/components/schemas/Iso3166_2"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "norme",
+          "mapping": {
+            "ISO-3166-3": "#/components/schemas/Iso3166_3",
+            "ISO-3166-2": "#/components/schemas/Iso3166_2"
+          }
+        }
+      },
+      "Iso3166_3": {
+        "type": "object",
+        "required": [
+          "code",
+          "norme"
+        ],
+        "properties": {
+          "norme": {
+            "type": "string",
+            "pattern": "^ISO-3166-3$"
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "FRA",
+              "BEL",
+              "USA"
+            ]
+          }
+        }
+      },
+      "Iso3166_2": {
+        "type": "object",
+        "required": [
+          "code",
+          "norme"
+        ],
+        "properties": {
+          "norme": {
+            "type": "string",
+            "pattern": "^ISO-3166-2$"
+          },
+          "code": {
+            "type": "string",
+            "enum": [
+              "FR",
+              "BE",
+              "US"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
