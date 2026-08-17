@@ -61,6 +61,16 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-models</artifactId>
+      <version>2.2.52</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>jakarta.validation</groupId>
       <artifactId>jakarta.validation-api</artifactId>
       <version>3.1.1</version>
@@ -71,6 +81,7 @@
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
+
     <!-- Optionally: parameterized tests support -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -140,12 +151,13 @@
                 <apiPackage>top.marchand.json.openapi.api</apiPackage>
                 <modelPackage>top.marchand.json.openapi.model</modelPackage>
                 <dateLibrary>java8</dateLibrary>
-                <legacyDiscriminatorBehavior>false</legacyDiscriminatorBehavior>
+                <legacyDiscriminatorBehavior>true</legacyDiscriminatorBehavior>
                 <library>spring-boot</library>
-                <!--sourceFolder>${project.build.directory}/generated-sources</sourceFolder-->
                 <useJackson3>true</useJackson3>
                 <useJakartaEe>true</useJakartaEe>
                 <useSpringBoot4>true</useSpringBoot4>
+                <useJsonIgnores>true</useJsonIgnores>
+                <disableDiscriminatorJsonIgnoreProperties>true</disableDiscriminatorJsonIgnoreProperties>
               </configOptions>
             </configuration>
           </execution>
